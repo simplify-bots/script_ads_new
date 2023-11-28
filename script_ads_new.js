@@ -26,8 +26,8 @@ if (cluster.isMaster) {
             // Выводим все данные, полученные в вебхуке
             console.log('Received data:', req.body);
 
-            // Получаем массив telegram_id из ключа collection
-            const telegramIDs = collection.map(item => item.telegram_id);
+            // Преобразуем строку с telegram_id, разделенными запятыми, в массив
+            const telegramIDs = collection.split(',');
 
             const totalUsers = telegramIDs.length;
             const totalTimeMinutes = Math.ceil((totalUsers * (1 / 15)) / 60);
